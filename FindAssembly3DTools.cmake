@@ -3,14 +3,14 @@
 FIND_PATH(
     A3DTOOLS_INCLUDE_DIR
     NAMES Assembly3D.h
-    HINTS $ENV{A3DTOOLS_DIR}/include
-    PATHS /usr/local/include
-          /usr/include
+    HINTS $ENV{A3DTOOLS_DIR}/include/a3dtools
+    PATHS /usr/local/include/a3dtools
+          /usr/include/a3dtools
 )
 
 FIND_LIBRARY(
     A3DTOOLS_LIBRARY
-    NAMES A3DTOOLS libA3DCommon
+    NAMES A3DTOOLS libA3DCommon.a
     HINTS $ENV{A3DTOOLS_DIR}/lib
     PATHS /usr/local/lib
           /usr/lib
