@@ -1,12 +1,17 @@
 # Find Assembly3DTools
 
+MACRO(DBG_MSG _MSG)
+  MESSAGE(STATUS "${CMAKE_CURRENT_LIST_FILE}(${CMAKE_CURRENT_LIST_LINE}): ${_MSG}")
+ENDMACRO(DBG_MSG)
+
 FIND_PATH(
     A3DTOOLS_INCLUDE_DIR
     NAMES Assembly3D.h
-    HINTS $ENV{A3DTOOLS_DIR}/include/a3dtools
-    PATHS /usr/local/include/a3dtools
-          /usr/include/a3dtools
+    HINTS $ENV{A3DTOOLS_DIR}/include/a3dtools/include
+    PATHS /usr/local/include/a3dtools/include
+          /usr/include/a3dtools/include
 )
+DBG_MSG("A3DTOOLS_INCLUDE_DIR = ${A3DTOOLS_INCLUDE_DIR}")
 
 FIND_LIBRARY(
     A3DTOOLS_LIBRARY
@@ -15,9 +20,11 @@ FIND_LIBRARY(
     PATHS /usr/local/lib
           /usr/lib
 )
+DBG_MSG("A3DTOOLS_LIBRARY = ${A3DTOOLS_LIBRARY}")
 
 SET(A3DTOOLS_FOUND "NO")
 
 IF( A3DTOOLS_INCLUDE_DIR AND A3DTOOLS_LIBRARY )
     SET(A3DTOOLS_FOUND "YES")
+    DBG_MSG("Assembly3D Tools found!")
 ENDIF()
